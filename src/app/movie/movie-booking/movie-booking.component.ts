@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {bookingSchedule} from './../../store'
+import {ARRAY, bookingSchedule} from './../../store'
 @Component({
   selector: 'app-movie-booking',
   templateUrl: './movie-booking.component.html',
@@ -7,12 +7,14 @@ import {bookingSchedule} from './../../store'
 })
 export class MovieBookingComponent {
 
-  Arr:any [] = [10,20,30,40,50,60,70,80,90,100,110,120];
   public bookingSchedule1 = bookingSchedule
   TotalPrice:number = 0;
+  currentSchedule:string = "morning";
   public MySchedule = bookingSchedule.morning
 constructor()
 {
+  console.log("ARRAY : ",ARRAY[0].morning);
+  
   bookingSchedule.morning.silver.A[0] = 100;
   bookingSchedule.afternoon.silver.A[0] = 200;
   bookingSchedule.evening.silver.A[0] = 300;
@@ -26,7 +28,7 @@ changeTheSchedule(num:number)
     bookingSchedule.morning.selected = true;
     bookingSchedule.evening.selected = false;
     bookingSchedule.afternoon.selected = false;
-
+    this.currentSchedule = "morning";
      this.MySchedule = bookingSchedule.morning
      this.TotalPrice = bookingSchedule.morning.totalPrice;
 
@@ -36,7 +38,7 @@ changeTheSchedule(num:number)
     bookingSchedule.morning.selected = false;
     bookingSchedule.evening.selected = false;
     bookingSchedule.afternoon.selected = true;
-
+    this.currentSchedule = "afternoon";
      this.MySchedule = bookingSchedule.afternoon;
      this.TotalPrice = bookingSchedule.afternoon.totalPrice;
    }
@@ -45,11 +47,28 @@ changeTheSchedule(num:number)
     bookingSchedule.morning.selected = false;
     bookingSchedule.evening.selected = true;
     bookingSchedule.afternoon.selected = false;
-
+    this.currentSchedule = "evening";
      this.MySchedule = bookingSchedule.evening
      this.TotalPrice = bookingSchedule.evening.totalPrice;
    }
    console.log(this.MySchedule);
+}
+
+bookTicket(type:string,row:string, seatNo:number)
+{
+  console.log(type, row, seatNo);
+  if(this.currentSchedule=='morning')
+  {
+
+  }
+  else if(this.currentSchedule=='afternoon')
+  {
+
+  }
+  else if(this.currentSchedule=='evening')
+  {
+
+  }
 }
 
 }

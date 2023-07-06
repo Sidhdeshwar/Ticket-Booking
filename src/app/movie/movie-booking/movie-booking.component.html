@@ -5,15 +5,15 @@
     Hello world!
   </h1>
 </div> -->
-<div class="bg-red-400 h-20">
+<div class="bg-red-200 h-20">
   <div>
     <b class="text-white font-bold p-5 pt-10">Movie Name : </b>
   </div>
 </div>
 <div class="mt-5">
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.morning.selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.afternoon.selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.evening.selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.morning.selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.afternoon.selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.evening.selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
 </div>
 <div class="text-center">Total Price : {{TotalPrice}}</div>
 <div class="container border-2 mx-auto mt-10 w-8/12 border-red-200 ">
@@ -25,7 +25,7 @@
         <div class="font-bold ms-5 text-slate-600">Silver : Rs-150 </div>
         <div class="ms-2 p-2 flex ">A
           <div *ngFor="let obj of MySchedule.silver.A; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2">{{obj}}</button>
+            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('silver','A',(i+1))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
@@ -36,19 +36,19 @@
         <div class="font-bold ms-5 text-amber-500">Golden : Rs-200 </div>
         <div class="ms-2 p-2 flex ">B
           <div *ngFor="let obj of MySchedule.golden.B; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','B',(i+1))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
         <div class="ms-2 p-2 flex ">C
           <div *ngFor="let obj of MySchedule.golden.C ; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','C',(i+1))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
         <div class="ms-2 p-2 flex ">D
           <div *ngFor="let obj of MySchedule.golden.D ; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','D',(i+1))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
