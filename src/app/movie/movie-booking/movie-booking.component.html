@@ -11,9 +11,9 @@
   </div>
 </div>
 <div class="mt-5">
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" (click)="changeTheSchedule(1)">09:00 AM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" (click)="changeTheSchedule(2)">02:00 PM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" (click)="changeTheSchedule(3)">07:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.morning.selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.afternoon.selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-lime-700 border border-slate-700 hover:text-white" [ngClass]="{'bg-lime-800':bookingSchedule1.evening.selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
 </div>
 <div class="text-center">Total Price : {{TotalPrice}}</div>
 <div class="container border-2 mx-auto mt-10 w-8/12 border-red-200 ">
