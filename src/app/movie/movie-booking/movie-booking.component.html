@@ -11,9 +11,9 @@
   </div>
 </div>
 <div class="mt-5">
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.morning.selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.afternoon.selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-red-800 text-white':bookingSchedule1.evening.selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[0].selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[1].selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[2].selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
 </div>
 <div class="text-center">Total Price : {{TotalPrice}}</div>
 <div class="container border-2 mx-auto mt-10 w-8/12 border-red-200 ">
@@ -24,7 +24,7 @@
         <!-- ~ SILVER -->
         <div class="font-bold ms-5 text-slate-600">Silver : Rs-150 </div>
         <div class="ms-2 p-2 flex ">A
-          <div *ngFor="let obj of MySchedule.silver.A; let i=index">
+          <div *ngFor="let obj of [] ; let i=index">
             <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('silver','A',(i+1))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
