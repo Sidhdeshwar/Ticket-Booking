@@ -118,18 +118,18 @@ export const evening = {
 
 export const bookingSchedule1 = [morning,afternoon,evening];
 
-export const ARRAY = [
+export const ARRAY: any = [
   { shift:'morning',
-               morning: [ { position: 'silver',
-                                     silver: [{row:'A',A:[false,false,false,false,false,false,false,false,false,false,false,false]}]
-                                    },
-                                    {
-                                      position: 'golden',
-                                      golden:  [{row:'B',B:[false,false,false,false,false,false,false,false,false,false,false,false]},
+    morning: [ { position: 'silver',
+                            silver: [{row:'A',A:[true,false,false,false,false,false,false,false,false,false,false,false]}]
+                          },
+                          {
+                            position: 'golden',
+                            golden:  [{row:'B',B:[false,false,false,false,false,false,false,false,false,false,false,false]},
                                                 {row:'C',C:[false,false,false,false,false,false,false,false,false,false,false,false]},
                                                 {row:'D',D:[false,false,false,false,false,false,false,false,false,false,false,false]}
                                                ]
-                                    },
+                          },
                                     {
                                       position:'diamond',
                                       diamond: [
@@ -146,7 +146,7 @@ export const ARRAY = [
    },
    { shift:'afternoon',
    afternoon: [ { position: 'silver',
-                silver: [{row:'A',A:[false,false,false,false,false,false,false,false,false,false,false,false]}]
+                silver: [{row:'A',A:[false,true,false,false,false,false,false,false,false,false,false,false]}]
                },
                {
                  position: 'golden',
@@ -170,7 +170,7 @@ export const ARRAY = [
 },
 { shift:'evening',
        evening: [ { position: 'silver',
-             silver: [{row:'A',A:[false,false,false,false,false,false,false,false,false,false,false,false]}]
+             silver: [{row:'A',A:[false,false,true,false,false,false,false,false,false,false,false,false]}]
             },
             {
               position: 'golden',

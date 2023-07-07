@@ -1,31 +1,27 @@
-<!-- <div class="container">
-  <button class="bg-red-500 p-3 mx-5  font-bold rounded-3xl hover:bg-neutral-300  border-blue-800 border-2" >BUTTON BTN</button>
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  border-rose-600 border-4 rounded">Button </button>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-</div> -->
+
 <div class="bg-red-200 h-20">
   <div>
     <b class="text-white font-bold p-5 pt-10">Movie Name : </b>
   </div>
 </div>
 <div class="mt-5">
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[0].selected}" (click)="changeTheSchedule(1)">09:00 AM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[1].selected}" (click)="changeTheSchedule(2)">02:00 PM</button>
-  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'bg-blue-950 text-white':bookingSchedule1[2].selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'shift':SCHEDULES[0].selected,}"   (click)="changeTheSchedule(1)">09:00 AM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'shift':SCHEDULES[1].selected,}" (click)="changeTheSchedule(2)">02:00 PM</button>
+  <button class="bg-zinc-200 px-5 py-2 ms-5 hover:bg-red-800 border border-slate-700 hover:text-white" [ngClass]="{'shift':SCHEDULES[2].selected}" (click)="changeTheSchedule(3)">07:00 PM</button>
 </div>
+
+
 <div class="text-center">Total Price : {{TotalPrice}}</div>
-<div class="container border-2 mx-auto mt-10 w-8/12 border-red-200 ">
-        <div class="bg-yellow-500 w-4/12 mx-auto text-center">Screen</div>
+<div class="container border-2 mx-auto mt-10 w-8/12 border-red-200 m-2">
+        <div class="bg-yellow-500 w-8/12 mx-auto text-center">Screen</div>
         <!-- * Spacing 1 -->
         <div class="h-10"></div>
         <!-- * Spacing 1 -->
         <!-- ~ SILVER -->
         <div class="font-bold ms-5 text-slate-600">Silver : Rs-150 </div>
         <div class="ms-2 p-2 flex ">A
-          <div *ngFor="let obj of [] ; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('silver','A',(i+1))">{{i+1}}</button>
+          <div *ngFor="let obj of currentShift[0].silver[0].A;  let i=index">
+            <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[0].silver[0].A[i]}" (click)="bookTicket('silver','A',(i))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
@@ -35,20 +31,20 @@
         <!-- ~ SILVER -->
         <div class="font-bold ms-5 text-amber-500">Golden : Rs-200 </div>
         <div class="ms-2 p-2 flex ">B
-          <div *ngFor="let obj of MySchedule.golden.B; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','B',(i+1))">{{i+1}}</button>
+          <div *ngFor="let obj of currentShift[1].golden[0].B; let i=index">
+            <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[1].golden[0].B[i]}" (click)="bookTicket('golden','B',(i))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
         <div class="ms-2 p-2 flex ">C
-          <div *ngFor="let obj of MySchedule.golden.C ; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','C',(i+1))">{{i+1}}</button>
+          <div *ngFor="let obj of currentShift[1].golden[1].C ; let i=index">
+            <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[1].golden[1].C[i]}" (click)="bookTicket('golden','C',(i))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
         <div class="ms-2 p-2 flex ">D
-          <div *ngFor="let obj of MySchedule.golden.D ; let i=index">
-            <button class="bg-green-200 px-5 py-1 ms-2" (click)="bookTicket('golden','D',(i+1))">{{i+1}}</button>
+          <div *ngFor="let obj of currentShift[1].golden[2].D ; let i=index">
+            <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[1].golden[2].D[i]}" (click)="bookTicket('golden','D',(i))">{{i+1}}</button>
             <div [ngClass]="{'w-48': i==5}"></div>
           </div>
         </div>
@@ -58,26 +54,26 @@
       <!-- ~ Diamond -->
       <div class="font-bold ms-5 text-red-600">Dimond : Rs-250 </div>
       <div class="ms-2 p-2 flex ">E
-        <div *ngFor="let obj of MySchedule.diamond.E; let i=index">
-          <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+        <div *ngFor="let obj of currentShift[2].diamond[0].E; let i=index">
+          <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[2].diamond[0].E[i]}"  (click)="bookTicket('dimond','E',(i))">{{i+1}}</button>
           <div [ngClass]="{'w-48': i==5}"></div>
         </div>
       </div>
       <div class="ms-2 p-2 flex ">F
-        <div *ngFor="let obj of MySchedule.diamond.F ; let i=index">
-          <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+        <div *ngFor="let obj of SCHEDULES[0].morning[2].diamond[1].F; let i=index">
+          <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[2].diamond[1].F[i]}"  (click)="bookTicket('dimond','F',(i))">{{i+1}}</button>
           <div [ngClass]="{'w-48': i==5}"></div>
         </div>
       </div>
       <div class="ms-2 p-2 flex ">G
-        <div *ngFor="let obj of MySchedule.diamond.G ; let i=index">
-          <button class="bg-green-200 px-5 py-1 ms-2">{{i+1}}</button>
+        <div *ngFor="let obj of SCHEDULES[0].morning[2].diamond[2].G ; let i=index">
+          <button class="bg-green-200 px-5 py-1 ms-2" [ngClass]="{'btn':currentShift[2].diamond[2].G[i]}"  (click)="bookTicket('dimond','G',(i))">{{i+1}}</button>
           <div [ngClass]="{'w-48': i==5}"></div>
         </div>
       </div>
       <div class="ms-2 p-2 flex ">H
-        <div *ngFor="let obj of MySchedule.diamond.H ; let i=index">
-          <button class="bg-green-200 px-5 py-1 ms-5">{{i+1}}</button>
+        <div *ngFor="let obj of SCHEDULES[0].morning[2].diamond[3].H; let i=index">
+          <button class="bg-green-200 px-5 py-1 ms-5" [ngClass]="{'btn':currentShift[2].diamond[3].H[i]}"   (click)="bookTicket('dimond','H',(i))">{{i+1}}</button>
 
         </div>
       </div>

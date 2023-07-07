@@ -1,82 +1,51 @@
 import { Component } from '@angular/core';
-import { ARRAY, bookingSchedule} from './../../store'
+import { ARRAY, bookingSchedule } from './../../store';
+import { from, toArray } from 'rxjs';
+import { MovieServService } from '../movie-serv.service';
 @Component({
   selector: 'app-movie-booking',
   templateUrl: './movie-booking.component.html',
-  styleUrls: ['./movie-booking.component.css']
+  styleUrls: ['./movie-booking.component.css'],
 })
 export class MovieBookingComponent {
+  SCHEDULES = ARRAY;
+  TotalPrice: number = 0;
+  currentSchedule: number = 0;
 
-  public bookingSchedule1 = ARRAY 
-  TotalPrice:number = 0;
-  currentSchedule:string = "morning";
-  public MySchedule = bookingSchedule.morning
-constructor()
-{
-  console.log("ARRAY : ",ARRAY[0].selected);
-  
-  bookingSchedule.morning.silver.A[0] = 100;
-  bookingSchedule.afternoon.silver.A[0] = 200;
-  bookingSchedule.evening.silver.A[0] = 300;
-  
-}
+  currentShift:any [] = [];
 
-changeTheSchedule(num:number)
-{  
+  constructor(private movieService:MovieServService) {
+     this.currentShift = ARRAY[0].morning;
+  }
 
-   if(num==1)
-   {
+  changeTheSchedule(num: number) {
+    if (num == 1) {
       ARRAY[0].selected = true;
       ARRAY[1].selected = false;
       ARRAY[2].selected = false;
 
-    // this.currentSchedule = "morning";
-   
-    //  this.TotalPrice = bookingSchedule.morning.totalPrice;
+      this.currentSchedule = 0;
+      this.currentShift = ARRAY[0].morning;
 
-   }
-   if(num==2)
-   {
-    ARRAY[0].selected = false;
+    }
+    if (num == 2) {
+      ARRAY[0].selected = false;
       ARRAY[1].selected = true;
       ARRAY[2].selected = false;
-    // bookingSchedule.morning.selected = false;
-    // bookingSchedule.evening.selected = false;
-    // bookingSchedule.afternoon.selected = true;
-    // this.currentSchedule = "afternoon";
-    //  this.MySchedule = bookingSchedule.afternoon;
-    //  this.TotalPrice = bookingSchedule.afternoon.totalPrice;
-   }
-   if(num==3)
-   {
-    ARRAY[0].selected = false;
-    ARRAY[1].selected = false;
-    ARRAY[2].selected = true;
-    // bookingSchedule.morning.selected = false;
-    // bookingSchedule.evening.selected = false;
-    // bookingSchedule.afternoon.selected = true;
-    // this.currentSchedule = "evening";
-    //  this.MySchedule = bookingSchedule.evening
-    //  this.TotalPrice = bookingSchedule.evening.totalPrice;
-   }
-   console.log(this.MySchedule);
-}
-
-bookTicket(type:string,row:string, seatNo:number)
-{
-  console.log(type, row, seatNo);
-  if(this.currentSchedule=='morning')
-  {
-
+      this.currentSchedule = 1;
+      this.currentShift = ARRAY[1].afternoon;
+    }
+    if (num == 3) {
+      ARRAY[0].selected = false;
+      ARRAY[1].selected = false;
+      ARRAY[2].selected = true;
+      this.currentSchedule = 2;
+      this.currentShift = ARRAY[2].evening;
+    }
   }
-  else if(this.currentSchedule=='afternoon')
-  {
 
+  bookTicket(positionType: string, row: string, seatNo: number) {
+
+       this.movieService.bookTicket(this.currentSchedule,positionType,row,seatNo)
   }
-  else if(this.currentSchedule=='evening')
-  {
-
-  }
-}
-
 }
