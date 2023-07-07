@@ -7,10 +7,10 @@
 
 @layer base{
   .shift{
-    @apply bg-green-500 text-red-700
+    @apply bg-green-500 text-white
   }
   .btn{
-     @apply bg-emerald-500 
+     @apply bg-emerald-500
   }
   button{
     @apply border border-black
